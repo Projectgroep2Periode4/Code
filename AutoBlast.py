@@ -2,6 +2,7 @@ import xlrd
 
 def main():
     Headers_For,Headers_Rev,Sequences_For,Sequences_Rev,FastQs_For,FastQs_Rev=Open_test()
+    To_File(Headers_For,Headers_Rev,Sequences_For,Sequences_Rev,FastQs_For,FastQs_Rev)
 
 def Open_test():
     Headers_For=[]
@@ -22,5 +23,10 @@ def Open_test():
         FastQs_Rev.append(worksheet.cell(i,5).value)
 
     return Headers_For,Headers_Rev,Sequences_For,Sequences_Rev,FastQs_For,FastQs_Rev
+
+def To_File(Headers_For,Headers_Rev,Sequences_For,Sequences_Rev,FastQs_For,FastQs_Rev):
+    Data='HF\t'+str(Headers_For)+'\n\nHR\t'+str(Headers_Rev)+'\n\nSF\t'+str(Sequences_For)+'\n\nSR\t'+str(Sequences_Rev)+'\n\nFF\t'+str(FastQs_For)+'\n\nFR\t'+str(FastQs_Rev)
+    with open('ParsedData.txt','w') as FileOut:
+        FileOut.write(Data)
 
 main()
