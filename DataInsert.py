@@ -107,7 +107,7 @@ def Insert_XML_Data(Con):
             Des=str(DesS[i][0])+"|"+str(DesS[i][1])+"|"+str(DesS[i][2])+"|"+str(DesS[i][3])+"|"+str(DesS[i][4]).replace(" >gi","").replace("'","")
         print(Des)
         Cur.execute("insert into blast (description,Evalue,query_cover,blast_id) value ('"+str(Des)+"',"+str(EValS[i])+","+str(QCovS[i])+","+str(i)+")")
-    Con.Commit()
+        Con.commit()
     Tend=time.time()
     print("\n-->",Length_Blasts,"Results committed in",int(round(Tend-Tstart)),"seconds\n") 
 
@@ -115,7 +115,7 @@ def Insert_XML_Data(Con):
     for i in range(0,Length_Blasts):
         print(DesS[i][1])
         Cur.execute("insert into fwrv (read_number,read_id) value ("+str(DesS[i][1])+","+str(i)+")")
-    Con.Commit()
+        Con.commit()
     Tend=time.time()
     print("\n-->",Length_Blasts,"Results committed in",int(round(Tend-Tstart)),"seconds\n")
 
@@ -135,7 +135,7 @@ def Insert_XML_Data(Con):
     for i in range(0,len(Organisms)):
         print(Organisms[i])
         Cur.execute("insert into organism (organism,organism_id) value ('"+str(Organisms[i])+"',"+str(i)+")")
-    Con.Commit()
+        Con.commit()
     Tend=time.time()
     print("\n-->",len(Organisms),"Results committed in",int(round(Tend-Tstart)),"seconds\n")
 
